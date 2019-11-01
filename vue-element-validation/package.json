@@ -1,6 +1,6 @@
 {
   "name": "vue-element-validation",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "vue-element-validation",
   "main": "./validate/index",
   "scripts": {

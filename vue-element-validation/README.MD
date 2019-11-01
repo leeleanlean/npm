@@ -8,7 +8,7 @@ Some common methods are provided to eliminate the tedious problem that the tradi
 > npm i vue-element-validation
 
 ### Github
-<u>[Source Link](https://leeleanlean.github.io/react-admin-template/index.html)</u>
+<u>[Source Link](https://github.com/leeleanlean/npm/tree/master/vue-element-validation)</u>
 
 ### Example
 
@@ -39,7 +39,7 @@ This global component supports the Vue project based on typescript.
 
 ### Attributes
 |   参数   |  说明   |  Desc   |
-|  ----   |  ----   |
+|  ----   |  ----   |  ----   |
 | required  | 是否必填 | Is it necessary to fill in |
 | trigger   | 校验触发事件 | Verification trigger event |
 | max   | 最大长度 | Maximum length |
