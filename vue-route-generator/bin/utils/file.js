@@ -87,11 +87,18 @@ module.exports = {
     if (fs.existsSync(path.join(`${this.views}/${name}`))) {
       console.log(`Error: Route name already exists`)
     } else {
+      const route = {
+        path: `/${name}`,
+        name,
+        component: `() => import(@/views/${name})`
+      }
+      this.generateRoute(route, name)
+
       // 1. Create folder
-      this.createFolder(`${this.views}/${name}/components/`)
+      // this.createFolder(`${this.views}/${name}/components/`)
 
       // 2. Generate index.vue
-      fs.writeFileSync(path.join(`${this.views}/${name}/index.vue`), content.vue(name))
+      // fs.writeFileSync(path.join(`${this.views}/${name}/index.vue`), content.vue(name))
 
       // 3. Set router
       // const routes = require(`${this.router}/routes`)
@@ -104,6 +111,36 @@ module.exports = {
       // routes.push(route)
       // console.log(routes)
     }
+  },
+
+  /**
+   * 
+   * @param route
+   * @param name
+   */
+  generateRoute (route, name) {
+
+    const names = name.split('/')
+    const length = name.split('/').length
+    let routes = require(`${this.router}/routes`)
+    routes = routes.length ? routes : []
+    let content = ''
+
+    switch (length) {
+      case 1:
+        routes.push(route)
+        content = `module.exports = ${JSON.stringify(routes, null, 2).replace(/"/g, '\'')}
+`
+        break
+
+      case 2:
+        console.log(names[0], names[1])
+        break
+      default:
+        console.log('Error: Support up to three levels of route')
+        break;
+    }
+    fs.writeFileSync(path.join(`./router/routes.js`), content)
   },
 
   /**
